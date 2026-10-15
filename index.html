@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Amala Florist | Florist & Gift Shop Terlengkap</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Poppins', sans-serif; }
+        .font-serif-custom { font-family: 'Playfair Display', serif; }
+        .page-section { display: none; }
+        .page-section.active { display: block; animation: fadeIn 0.3s ease-in-out; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-rose-50/30 text-gray-800 flex flex-col min-h-screen">
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="bg-white/95 backdrop-blur-md sticky top-0 z-50 shadow-sm border-b border-rose-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo -->
+                <div class="flex-shrink-0 cursor-pointer" onclick="showSection('beranda')">
+                    <h1 class="font-serif-custom text-2xl sm:text-3xl font-bold text-rose-900 tracking-wide">
+                        L'Amala <span class="text-rose-500 font-light italic">Florist</span>
+                    </h1>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 font-medium text-gray-600">
+                    <button onclick="showSection('beranda')" class="nav-btn hover:text-rose-600 transition">Beranda</button>
+                    <button onclick="showSection('katalog')" class="nav-btn hover:text-rose-600 transition">Katalog & Request</button>
+                    <button onclick="showSection('lokasi')" class="nav-btn hover:text-rose-600 transition">Lokasi Toko</button>
+                </div>
+
+                <!-- Keranjang Icon -->
+                <div class="flex items-center space-x-4">
+                    <button onclick="showSection('keranjang')" class="relative p-2 text-gray-700 hover:text-rose-600 transition">
+                        <i class="fa-solid fa-bag-shopping text-2xl"></i>
+                        <span id="cart-count" class="absolute -top-1 -right-1 bg-rose-600 text-white text-xs w-5 h-5 rounded-full flex items-center justify-center font-bold shadow-md">0</span>
+                    </button>
+                    <!-- Mobile Hamburger -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden text-gray-700 text-2xl focus:outline-none">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-rose-100 px-4 pt-2 pb-4 space-y-3 font-medium text-gray-700">
+            <button onclick="showSection('beranda'); toggleMobileMenu()" class="block w-full text-left py-2 hover:text-rose-600">Beranda</button>
+            <button onclick="showSection('katalog'); toggleMobileMenu()" class="block w-full text-left py-2 hover:text-rose-600">Katalog & Request</button>
+            <button onclick="showSection('lokasi'); toggleMobileMenu()" class="block w-full text-left py-2 hover:text-rose-600">Lokasi Toko</button>
+        </div>
+    </nav>
+
+    <!-- ===== CONTENT SECTIONS ===== -->
+    <main class="flex-grow">
+
+        <!-- 1. BERANDA -->
+        <section id="beranda" class="page-section active">
+            <!-- Hero Banner -->
+            <div class="relative bg-gradient-to-r from-rose-100 via-pink-50 to-rose-100 py-16 lg:py-24 px-4 overflow-hidden">
+                <div class="max-w-5xl mx-auto text-center relative z-10">
+                    <span class="bg-rose-200/80 text-rose-800 font-semibold tracking-wider text-xs px-4 py-1.5 rounded-full uppercase mb-4 inline-block">
+                        ⚡ Pengiriman Bunga Segar Hari Itu Juga (Same-Day)
+                    </span>
+                    <h2 class="font-serif-custom text-4xl sm:text-6xl font-bold text-gray-900 leading-tight mb-6">
+                        Bunga Segar, Buket Uang, Snack & Wisuda Dalam Satu Tempat
+                    </h2>
+                    <p class="text-gray-600 text-base sm:text-lg max-w-2xl mx-auto mb-8 font-light">
+                        Pilih rangkaian bunga segar pilihan (Mawar, Lily, Tulip), buket uang custom, buket snack kegemaran, hingga buket artificial & wisuda. Bebas request sesuai keinginanmu!
+                    </p>
+                    <div class="flex flex-wrap justify-center gap-4">
+                        <button onclick="showSection('katalog')" class="bg-rose-600 hover:bg-rose-700 text-white px-8 py-3.5 rounded-full font-medium shadow-lg hover:shadow-rose-300/50 transition transform hover:-translate-y-0.5">
+                            Belanja Katalog
+                        </button>
+                        <button onclick="openRequestModal()" class="bg-white hover:bg-rose-50 text-rose-700 border border-rose-300 px-8 py-3.5 rounded-full font-medium shadow-sm transition flex items-center space-x-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-rose-500"></i>
+                            <span>Request Custom WA</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Features Badge -->
+            <div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                <div class="p-5 bg-white rounded-2xl shadow-sm border border-rose-50">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                        <i class="fa-solid fa-truck-fast"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-sm">Bunga Segar Kirim Hari Ini</h3>
+                    <p class="text-gray-500 text-xs mt-1">Order sebelum jam 16:00 dikirim di hari yang sama.</p>
+                </div>
+                <div class="p-5 bg-white rounded-2xl shadow-sm border border-rose-50">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                        <i class="fa-solid fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-sm">Buket Uang & Snack</h3>
+                    <p class="text-gray-500 text-xs mt-1">Bebas atur nominal uang & varian snack favorit.</p>
+                </div>
+                <div class="p-5 bg-white rounded-2xl shadow-sm border border-rose-50">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-sm">Spesialis Wisuda</h3>
+                    <p class="text-gray-500 text-xs mt-1">Lengkap dengan boneka, selempang nama & kartu ucapan.</p>
+                </div>
+                <div class="p-5 bg-white rounded-2xl shadow-sm border border-rose-50">
+                    <div class="w-12 h-12 bg-rose-100 text-rose-600 rounded-full flex items-center justify-center mx-auto mb-3 text-xl">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-sm">Request Bebas</h3>
+                    <p class="text-gray-500 text-xs mt-1">Konsultasikan ide buket impianmu langsung via WA.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. KATALOG -->
+        <section id="katalog" class="page-section">
+            <div class="max-w-7xl mx-auto px-4 py-10">
+                <div class="text-center mb-8">
+                    <h2 class="font-serif-custom text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Katalog Buket L'Amala</h2>
+                    <p class="text-gray-500 text-sm">Pilih buket favoritmu atau gunakan opsi Request Kustom jika punya referensi sendiri.</p>
+                </div>
+
+                <!-- Banner Request Bebas -->
+                <div class="bg-gradient-to-r from-rose-500 to-pink-600 rounded-2xl p-6 mb-8 text-white flex flex-col md:flex-row items-center justify-between shadow-md">
+                    <div class="mb-4 md:mb-0">
+                        <span class="bg-white/20 text-xs px-3 py-1 rounded-full uppercase tracking-wider">Layanan Kustom</span>
+                        <h3 class="text-xl font-bold mt-1">Punya Foto Referensi Buket Sendiri?</h3>
+                        <p class="text-rose-100 text-sm">Kamu bisa request jenis bunga (Mawar, Lily, Tulip), kombinasi warna, hingga budget khusus!</p>
+                    </div>
+                    <button onclick="openRequestModal()" class="bg-white text-rose-600 hover:bg-rose-50 font-semibold px-6 py-3 rounded-xl shadow transition shrink-0 whitespace-nowrap">
+                        <i class="fa-brands fa-whatsapp text-lg mr-2"></i>Request Via WhatsApp
+                    </button>
+                </div>
+
+                <!-- Category Filter Buttons -->
+                <div class="flex flex-wrap justify-center gap-2 mb-8" id="category-buttons">
+                    <button onclick="filterCategory('all')" class="cat-btn bg-rose-600 text-white px-4 py-2 rounded-full text-sm font-medium transition shadow-sm" data-cat="all">Semua Produk</button>
+                    <button onclick="filterCategory('segar')" class="cat-btn bg-white text-gray-600 hover:bg-rose-50 px-4 py-2 rounded-full text-sm font-medium transition border border-gray-200" data-cat="segar">🌹 Bunga Segar (Same Day)</button>
+                    <button onclick="filterCategory('uang')" class="cat-btn bg-white text-gray-600 hover:bg-rose-50 px-4 py-2 rounded-full text-sm font-medium transition border border-gray-200" data-cat="uang">💵 Buket Uang</button>
+                    <button onclick="filterCategory('snack')" class="cat-btn bg-white text-gray-600 hover:bg-rose-50 px-4 py-2 rounded-full text-sm font-medium transition border border-gray-200" data-cat="snack">🍫 Buket Snack</button>
+                    <button onclick="filterCategory('artificial')" class="cat-btn bg-white text-gray-600 hover:bg-rose-50 px-4 py-2 rounded-full text-sm font-medium transition border border-gray-200" data-cat="artificial">🌸 Buket Artificial</button>
+                    <button onclick="filterCategory('wisuda')" class="cat-btn bg-white text-gray-600 hover:bg-rose-50 px-4 py-2 rounded-full text-sm font-medium transition border border-gray-200" data-cat="wisuda">🎓 Buket Wisuda</button>
+                </div>
+
+                <!-- Grid Products -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="product-grid">
+                    <!-- Produk dimasukkan via Javascript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. LOKASI -->
+        <section id="lokasi" class="page-section">
+            <div class="max-w-6xl mx-auto px-4 py-12">
+                <div class="text-center mb-10">
+                    <h2 class="font-serif-custom text-3xl sm:text-4xl font-bold text-gray-900 mb-2">Lokasi Galeri Toko</h2>
+                    <p class="text-gray-500">Kunjungi toko fisik kami atau dipesan secara online untuk pengiriman instan</p>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-rose-100">
+                    <!-- Info Detail -->
+                    <div class="space-y-6">
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-rose-100 text-rose-600 rounded-lg text-xl shrink-0">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Alamat Galeri</h4>
+                                <p class="text-gray-600 text-sm mt-1">Jl. Raya Serang - Pandeglang, Kota Serang, Banten 42111, Indonesia</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-rose-100 text-rose-600 rounded-lg text-xl shrink-0">
+                                <i class="fa-solid fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Jam Operasional Toko</h4>
+                                <p class="text-gray-600 text-sm mt-1">Senin - Minggu: 08:00 - 21:00 WIB</p>
+                                <p class="text-rose-600 text-xs font-semibold mt-0.5">*Pesanan Bunga Segar Same-Day s/d Pukul 16:00 WIB</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start space-x-4">
+                            <div class="p-3 bg-rose-100 text-rose-600 rounded-lg text-xl shrink-0">
+                                <i class="fa-brands fa-whatsapp"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-900">Kontak WhatsApp Admin</h4>
+                                <p class="text-gray-600 text-sm mt-1">+62 838-7590-5994</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Embed Google Map Serang -->
+                    <div class="w-full h-80 rounded-xl overflow-hidden shadow-inner border border-gray-200">
+                        <iframe 
+                            src="https://maps.app.goo.gl/fx3NzcgmuyJTrcnU9?g_st=aw" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy">
+                        </iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. KERANJANG & CHECKOUT E-COMMERCE -->
+        <section id="keranjang" class="page-section">
+            <div class="max-w-5xl mx-auto px-4 py-10">
+                <h2 class="font-serif-custom text-3xl font-bold text-gray-900 mb-6 border-b pb-4 flex items-center justify-between">
+                    <span><i class="fa-solid fa-cart-shopping text-rose-600 mr-2"></i> Checkout Pesanan</span>
+                    <span class="text-xs font-sans font-normal bg-rose-100 text-rose-700 px-3 py-1 rounded-full">Proses Instan via WhatsApp</span>
+                </h2>
+
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                    <!-- Left: Item List (Col 7) -->
+                    <div class="lg:col-span-7 space-y-4">
+                        <div class="bg-white p-4 rounded-xl border border-rose-100 shadow-sm">
+                            <h3 class="font-bold text-gray-800 text-base mb-3 flex items-center justify-between">
+                                <span>Daftar Produk</span>
+                                <button onclick="clearCart()" class="text-xs text-rose-500 hover:underline">Kosongkan Keranjang</button>
+                            </h3>
+                            <div id="cart-items-container" class="space-y-3">
+                                <!-- Cart items -->
+                            </div>
+                        </div>
+
+                        <!-- Catatan & Kartu Ucapan -->
+                        <div class="bg-white p-4 rounded-xl border border-rose-100 shadow-sm space-y-3">
+                            <h3 class="font-bold text-gray-800 text-sm flex items-center">
+                                <i class="fa-solid fa-envelope-open-text text-rose-500 mr-2"></i> Kartu Ucapan & Request Warna (Gratis)
+                            </h3>
+                            <textarea id="greeting-card" rows="2" placeholder="Tuliskan ucapan (contoh: Happy Graduation Sarah! S.Kom) & request warna pita/wrapping..." class="w-full px-3 py-2 border border-gray-200 rounded-lg text-xs focus:outline-none focus:border-rose-500"></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Right: Form Pengiriman & Pembayaran (Col 5) -->
+                    <div class="lg:col-span-5 bg-white p-5 rounded-xl shadow-sm border border-rose-100 h-fit space-y-4">
+                        <h3 class="font-bold text-gray-900 border-b pb-2 text-base">Informasi Pengiriman</h3>
+
+                        <div class="space-y-3 text-xs">
+                            <div>
+                                <label class="font-semibold text-gray-700 block mb-1">Nama Pemesan *</label>
+                                <input type="text" id="buyer-name" placeholder="Nama Anda" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-rose-500">
+                            </div>
+
+                            <div>
+                                <label class="font-semibold text-gray-700 block mb-1">Nomor HP/WhatsApp *</label>
+                                <input type="tel" id="buyer-phone" placeholder="0812xxxxxxx" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-rose-500">
+                            </div>
+
+                            <div>
+                                <label class="font-semibold text-gray-700 block mb-1">Opsi Pengiriman *</label>
+                                <select id="shipping-method" onchange="updateCartTotal()" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-rose-500 bg-white">
+                                    <option value="kurir">Kurir Instant / Same-Day (+Rp 15.000)</option>
+                                    <option value="pickup">Ambil Langsung di Toko (Gratis)</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="font-semibold text-gray-700 block mb-1">Alamat Lengkap / Lokasi Antar *</label>
+                                <textarea id="buyer-address" rows="2" placeholder="Jl. Raya No..., Kecamatan, Kota Serang (Sebutkan patokan)" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-rose-500"></textarea>
+                            </div>
+
+                            <div>
+                                <label class="font-semibold text-gray-700 block mb-1">Metode Pembayaran *</label>
+                                <select id="payment-method" class="w-full px-3 py-2 border rounded-lg focus:outline-none focus:border-rose-500 bg-white">
+                                    <option value="Transfer Bank / QRIS">Transfer Bank / QRIS (BCA, Mandiri, Dana)</option>
+                                    <option value="COD / Bayar Ditempat">Bayar di Tempat / COD (S&K berlaku)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Ringkasan Biaya -->
+                        <div class="border-t pt-3 space-y-1.5 text-xs text-gray-600"
